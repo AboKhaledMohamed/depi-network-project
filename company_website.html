@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الشبكات المتقدمة - الرئيسية</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23667eea"/><stop offset="100%" stop-color="%23764ba2"/></linearGradient></defs><rect width="1200" height="600" fill="url(%23grad1)"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="15" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: networkFloat 20s infinite linear;
+        }
+        
+        @keyframes networkFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, -100px); }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(31, 38, 135, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(31, 38, 135, 0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        .network-status {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .status-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-online {
+            background: #28a745;
+        }
+        
+        .status-warning {
+            background: #ffc107;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .dashboard-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .login-modal .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .network-topology {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .site-connection {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .site-connection:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 50px 0;
+            margin-top: 100px;
+        }
+        
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-network-wired me-2 text-primary"></i>
+                شركة الشبكات المتقدمة
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">الخدمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#network">حالة الشبكة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#monitoring">المراقبة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">عن الشركة</a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-user me-1"></i> تسجيل الدخول
+                    </button>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe me-1"></i> العربية
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('ar')">العربية</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-3 fw-bold mb-4">حلول الشبكات المتقدمة</h1>
+                    <p class="lead mb-5">نظام شبكات متكامل يربط بين مقريين رئيسيين و 4 فروع بأحدث تقنيات الأمان والمراقبة</p>
+                    
+                    <div class="network-topology">
+                        <h3 class="mb-4">هيكل الشبكة</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="site-connection">
+                                    <i class="fas fa-building fa-3x mb-3"></i>
+                                    <h5>المقر الرئيسي - الرياض</h5>
+                                    <p>الخادم الرئيسي ومركز البيانات</p>
+                                    <span class="status-indicator status-online"></span>
+                                    <span>متصل</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="site-connection">
+                                    <i class="fas fa-building fa-3x mb-3"></i>
+                                    <h5>المقر الرئيسي - القاهرة</h5>
+                                    <p>الخادم الاحتياطي ومركز التشغيل</p>
+                                    <span class="status-indicator status-online"></span>
+                                    <span>متصل</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <div class="site-connection">
+                                    <i class="fas fa-store fa-2x mb-2"></i>
+                                    <h6>فرع جدة</h6>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="site-connection">
+                                    <i class="fas fa-store fa-2x mb-2"></i>
+                                    <h6>فرع الدمام</h6>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="site-connection">
+                                    <i class="fas fa-store fa-2x mb-2"></i>
+                                    <h6>فرع الإسكندرية</h6>
+                                    <span class="status-indicator status-warning"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="site-connection">
+                                    <i class="fas fa-store fa-2x mb-2"></i>
+                                    <h6>فرع أسوان</h6>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg me-3" onclick="showDashboard()">
+                        <i class="fas fa-tachometer-alt me-2"></i>
+                        لوحة المراقبة
+                    </button>
+                    <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#networkModal">
+                        <i class="fas fa-chart-line me-2"></i>
+                        إحصائيات الشبكة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-12">
+                    <h2 class="display-4 fw-bold mb-4">خدماتنا المتقدمة</h2>
+                    <p class="lead">حلول شبكات متكاملة تطبق أحدث معايير الأمان والأداء</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>أمان الشبكة</h4>
+                            <p class="text-muted">حماية متقدمة باستخدام Firewall و IPS مع تشفير IPSec VPN للاتصالات بين المواقع</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>تشفير AES-256</li>
+                                <li><i class="fas fa-check text-success me-2"></i>مراقبة الشبكة 24/7</li>
+                                <li><i class="fas fa-check text-success me-2"></i>كشف التسلل IPS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4>مراقبة بالفيديو</h4>
+                            <p class="text-muted">نظام مراقبة متقدم بكاميرات IP عالية الدقة مع تسجيل وأرشفة</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>3 كاميرات لكل فرع</li>
+                                <li><i class="fas fa-check text-success me-2"></i>مراقبة عن بُعد</li>
+                                <li><i class="fas fa-check text-success me-2"></i>تسجيل عالي الدقة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h4>الاتصالات الصوتية</h4>
+                            <p class="text-muted">نظام VoIP متقدم للاتصالات الداخلية والخارجية مع جودة عالية</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>هواتف IP حديثة</li>
+                                <li><i class="fas fa-check text-success me-2"></i>QoS للصوت</li>
+                                <li><i class="fas fa-check text-success me-2"></i>مؤتمرات صوتية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <h4>الشبكة اللاسلكية</h4>
+                            <p class="text-muted">WiFi آمن وسريع بتقنية WPA3-Enterprise في جميع المواقع</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>تشفير WPA3</li>
+                                <li><i class="fas fa-check text-success me-2"></i>تحكم في الوصول</li>
+                                <li><i class="fas fa-check text-success me-2"></i>شبكة ضيوف منفصلة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4>إدارة الخوادم</h4>
+                            <p class="text-muted">خوادم Windows Server مع Active Directory وخدمات الملفات</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Domain Controller</li>
+                                <li><i class="fas fa-check text-success me-2"></i>File & Print Services</li>
+                                <li><i class="fas fa-check text-success me-2"></i>نسخ احتياطية تلقائية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>مراقبة الأداء</h4>
+                            <p class="text-muted">مراقبة شاملة لأداء الشبكة والأجهزة مع تقارير تفصيلية</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>SNMP Monitoring</li>
+                                <li><i class="fas fa-check text-success me-2"></i>تنبيهات فورية</li>
+                                <li><i class="fas fa-check text-success me-2"></i>تقارير دورية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Status Section -->
+    <section id="network" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-12">
+                    <h2 class="display-4 fw-bold mb-4">حالة الشبكة الحالية</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="network-status">
+                        <h4 class="mb-4">
+                            <i class="fas fa-heartbeat me-3"></i>
+                            حالة المواقع
+                        </h4>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>المقر الرئيسي - الرياض</span>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                                <small class="text-light">Uptime: 99.9% | الاستجابة: 15ms</small>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>المقر الرئيسي - القاهرة</span>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                                <small class="text-light">Uptime: 99.8% | الاستجابة: 23ms</small>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>فرع جدة</span>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                                <small class="text-light">Uptime: 99.7% | الاستجابة: 45ms</small>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>فرع الدمام</span>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                                <small class="text-light">Uptime: 99.5% | الاستجابة: 38ms</small>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>فرع الإسكندرية</span>
+                                    <span class="status-indicator status-warning"></span>
+                                </div>
+                                <small class="text-light">Uptime: 95.2% | الاستجابة: 89ms</small>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>فرع أسوان</span>
+                                    <span class="status-indicator status-online"></span>
+                                </div>
+                                <small class="text-light">Uptime: 99.1% | الاستجابة: 52ms</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card dashboard-card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">إحصائيات سريعة</h5>
+                            
+                            <div class="mb-4">
+                                <div class="stats-counter" id="totalDevices">42</div>
+                                <p class="mb-0">إجمالي الأجهزة</p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="stats-counter" id="activeUsers">35</div>
+                                <p class="mb-0">المستخدمون النشطون</p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="stats-counter" id="networkTraffic">2.4</div>
+                                <p class="mb-0">حركة البيانات (GB/h)</p>
+                            </div>
+                            
+                            <button class="btn btn-light" onclick="refreshStats()">
+                                <i class="fas fa-sync-alt me-2"></i>
+                                تحديث الإحصائيات
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monitoring Dashboard -->
+    <section id="monitoring" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-12">
+                    <h2 class="display-4 fw-bold mb-4">لوحة المراقبة المتقدمة</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-area me-2"></i>
+                                استخدام عرض النطاق
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="bandwidthChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-microchip me-2"></i>
+                                استخدام المعالج
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="cpuChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-12 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-video me-2"></i>
+                                مراقبة الكاميرات
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3" data-camera="1">
+                                    <div class="camera-feed">
+                                        <div class="camera-placeholder bg-dark text-white d-flex align-items-center justify-content-center" style="height: 150px; border-radius: 10px;">
+                                            <div class="text-center">
+                                                <i class="fas fa-video fa-3x mb-2"></i>
+                                                <p class="mb-0">كاميرا المدخل - جدة</p>
+                                                <small class="text-success">متصلة</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3" data-camera="2">
+                                    <div class="camera-feed">
+                                        <div class="camera-placeholder bg-dark text-white d-flex align-items-center justify-content-center" style="height: 150px; border-radius: 10px;">
+                                            <div class="text-center">
+                                                <i class="fas fa-video fa-3x mb-2"></i>
+                                                <p class="mb-0">كاميرا المكاتب - جدة</p>
+                                                <small class="text-success">متصلة</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3" data-camera="3">
+                                    <div class="camera-feed">
+                                        <div class="camera-placeholder bg-dark text-white d-flex align-items-center justify-content-center" style="height: 150px; border-radius: 10px;">
+                                            <div class="text-center">
+                                                <i class="fas fa-video fa-3x mb-2"></i>
+                                                <p class="mb-0">كاميرا المخزن - جدة</p>
+                                                <small class="text-warning">إنذار حركة</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3" data-camera="4">
+                                    <div class="camera-feed">
+                                        <div class="camera-placeholder bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 150px; border-radius: 10px;">
+                                            <div class="text-center">
+                                                <i class="fas fa-video-slash fa-3x mb-2"></i>
+                                                <p class="mb-0">كاميرا المدخل - الدمام</p>
+                                                <small class="text-danger">غير متصلة</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-3">
+                                <button class="btn btn-primary me-2" onclick="viewAllCameras()">
+                                    <i class="fas fa-expand me-2"></i>
+                                    عرض جميع الكاميرات
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="recordingSettings()">
+                                    <i class="fas fa-cog me-2"></i>
+                                    إعدادات التسجيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-12">
+                    <h2 class="display-4 fw-bold mb-4">عن الشركة</h2>
+                    <p class="lead">شركة رائدة في مجال حلول الشبكات والاتصالات المتقدمة</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">رؤيتنا ومهمتنا</h3>
+                    <p class="mb-4">نسعى لتوفير أحدث حلول الشبكات والاتصالات التي تضمن الأمان والموثوقية والأداء العالي لعملائنا في جميع أنحاء المنطقة.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="text-center">
+                                <div class="stats-counter">6</div>
+                                <p>مواقع متصلة</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-center">
+                                <div class="stats-counter">99.9%</div>
+                                <p>وقت التشغيل</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>تقنيات مطبقة في المشروع:</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>OSPF Routing Protocol</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>IPSec VPN Tunnels</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>VLAN Segmentation</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>QoS Traffic Management</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>SNMP Network Monitoring</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>High Availability (VRRP)</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Firewall & IPS Security</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Active Directory Integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>شركة الشبكات المتقدمة</h5>
+                    <p>حلول شبكات متكاملة وموثوقة تطبق أحدث المعايير العالمية في الأمان والأداء.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>مواقعنا</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>المقر الرئيسي - الرياض، السعودية</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>المقر الرئيسي - القاهرة، مصر</li>
+                        <li class="mb-2"><i class="fas fa-store me-2"></i>فرع جدة - السعودية</li>
+                        <li class="mb-2"><i class="fas fa-store me-2"></i>فرع الدمام - السعودية</li>
+                        <li class="mb-2"><i class="fas fa-store me-2"></i>فرع الإسكندرية - مصر</li>
+                        <li class="mb-2"><i class="fas fa-store me-2"></i>فرع أسوان - مصر</li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5>اتصل بنا</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+966-11-123-4567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>info@advanced-networks.com</li>
+                        <li class="mb-2"><i class="fas fa-globe me-2"></i>www.advanced-networks.com</li>
+                    </ul>
+                    
+                    <div class="mt-3">
+                        <h6>دعم فني 24/7</h6>
+                        <button class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-headset me-2"></i>
+                            طلب دعم فوري
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row text-center">
+                <div class="col-12">
+                    <p>&copy; 2025 شركة الشبكات المتقدمة. جميع الحقوق محفوظة.</p>
+                    <p class="small">تم تطوير هذا المشروع باستخدام معايير HCIA & HCIP مع تطبيق CIA Triad</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content login-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        تسجيل دخول الإدارة
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">اسم المستخدم</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">كلمة المرور</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label">تذكرني</label>
+                        </div>
+                    </form>
+                    
+                    <div class="loading-spinner" id="loginSpinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">جاري التحميل...</span>
+                        </div>
+                        <p class="mt-2">جاري التحقق من البيانات...</p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-primary" onclick="login()">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        تسجيل الدخول
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Network Statistics Modal -->
+    <div class="modal fade" id="networkModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-chart-pie me-2"></i>
+                        إحصائيات الشبكة التفصيلية
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>إجمالي البيانات المنقولة اليوم</h6>
+                                    <div class="stats-counter text-primary">127 GB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>متوسط وقت الاستجابة</h6>
+                                    <div class="stats-counter text-success">42 ms</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>عدد الجلسات النشطة</h6>
+                                    <div class="stats-counter text-info">156</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h6>معدل استخدام عرض النطاق</h6>
+                                    <div class="stats-counter text-warning">68%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <canvas id="detailedChart" width="600" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" onclick="exportReport()">
+                        <i class="fas fa-download me-2"></i>
+                        تصدير التقرير
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="refreshDetailedStats()">
+                        <i class="fas fa-sync-alt me-2"></i>
+                        تحديث البيانات
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <script>
+        // Global variables for managing state
+        let currentUser = null;
+        let networkData = {
+            bandwidth: [],
+            cpu: [],
+            sites: {},
+            cameras: {}
+        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            startRealTimeUpdates();
+            loadNetworkData();
+            initializeAnimations();
+        });
+
+        // Initialize Charts
+        function initializeCharts() {
+            // Bandwidth Chart
+            const bandwidthCtx = document.getElementById('bandwidthChart');
+            if (bandwidthCtx) {
+                new Chart(bandwidthCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+                        datasets: [{
+                            label: 'استخدام عرض النطاق (Mbps)',
+                            data: [45, 67, 89, 156, 134, 98],
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 200
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    font: {
+                                        family: 'Arial, sans-serif'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // CPU Usage Chart
+            const cpuCtx = document.getElementById('cpuChart');
+            if (cpuCtx) {
+                new Chart(cpuCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['مستخدم', 'نظام', 'فارغ'],
+                        datasets: [{
+                            data: [35, 25, 40],
+                            backgroundColor: ['#11998e', '#38ef7d', '#f1f3f4'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        family: 'Arial, sans-serif'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Login functionality
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showAlert('يرجى إدخال اسم المستخدم وكلمة المرور', 'warning');
+                return;
+            }
+
+            // Show loading spinner
+            document.getElementById('loginSpinner').style.display = 'block';
+            
+            // Simulate API call
+            setTimeout(() => {
+                if (username === 'admin' && password === 'Huawei@123456') {
+                    currentUser = {
+                        username: username,
+                        role: 'admin',
+                        loginTime: new Date()
+                    };
+                    
+                    showAlert('تم تسجيل الدخول بنجاح!', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                    updateUIForLoggedInUser();
+                } else {
+                    showAlert('اسم المستخدم أو كلمة المرور غير صحيحة', 'danger');
+                }
+                
+                document.getElementById('loginSpinner').style.display = 'none';
+            }, 2000);
+        }
+
+        // Update UI for logged in user
+        function updateUIForLoggedInUser() {
+            const loginBtn = document.querySelector('[data-bs-target="#loginModal"]');
+            if (loginBtn && currentUser) {
+                loginBtn.innerHTML = `<i class="fas fa-user-check me-1"></i> ${currentUser.username}`;
+                loginBtn.classList.remove('btn-outline-primary');
+                loginBtn.classList.add('btn-success');
+                loginBtn.removeAttribute('data-bs-toggle');
+                loginBtn.removeAttribute('data-bs-target');
+                loginBtn.onclick = logout;
+            }
+        }
+
+        // Logout functionality
+        function logout() {
+            currentUser = null;
+            const loginBtn = document.querySelector('button[onclick="logout()"]');
+            if (loginBtn) {
+                loginBtn.innerHTML = '<i class="fas fa-user me-1"></i> تسجيل الدخول';
+                loginBtn.classList.remove('btn-success');
+                loginBtn.classList.add('btn-outline-primary');
+                loginBtn.setAttribute('data-bs-toggle', 'modal');
+                loginBtn.setAttribute('data-bs-target', '#loginModal');
+                loginBtn.onclick = null;
+            }
+            showAlert('تم تسجيل الخروج بنجاح', 'info');
+        }
+
+        // Show dashboard
+        function showDashboard() {
+            if (!currentUser) {
+                showAlert('يرجى تسجيل الدخول أولاً للوصول إلى لوحة المراقبة', 'warning');
+                bootstrap.Modal.getOrCreateInstance(document.getElementById('loginModal')).show();
+                return;
+            }
+            
+            // Scroll to monitoring section
+            document.getElementById('monitoring').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Refresh statistics
+        function refreshStats() {
+            const devices = document.getElementById('totalDevices');
+            const users = document.getElementById('activeUsers');
+            const traffic = document.getElementById('networkTraffic');
+            
+            // Animate counter updates
+            animateCounter(devices, parseInt(devices.textContent), Math.floor(Math.random() * 10) + 38);
+            animateCounter(users, parseInt(users.textContent), Math.floor(Math.random() * 8) + 30);
+            animateCounter(traffic, parseFloat(traffic.textContent), (Math.random() * 2 + 1.5).toFixed(1));
+        }
+
+        // Animate counter
+        function animateCounter(element, start, end) {
+            const duration = 1000;
+            const increment = (end - start) / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                    element.textContent = end;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // View all cameras
+        function viewAllCameras() {
+            if (!currentUser) {
+                showAlert('يرجى تسجيل الدخول للوصول إلى الكاميرات', 'warning');
+                return;
+            }
+            
+            // Create camera grid modal
+            const cameraModal = new bootstrap.Modal(document.createElement('div'));
+            showAlert('فتح نافذة مراقبة الكاميرات...', 'info');
+        }
+
+        // Recording settings
+        function recordingSettings() {
+            if (!currentUser) {
+                showAlert('يرجى تسجيل الدخول للوصول إلى الإعدادات', 'warning');
+                return;
+            }
+            
+            showAlert('فتح إعدادات التسجيل...', 'info');
+        }
+
+        // Language switching
+        function switchLanguage(lang) {
+            if (lang === 'en') {
+                showAlert('English language support will be added soon', 'info');
+            } else {
+                showAlert('تم تبديل اللغة إلى العربية', 'success');
+            }
+        }
+
+        // Export report
+        function exportReport() {
+            if (!currentUser) {
+                showAlert('يرجى تسجيل الدخول لتصدير التقارير', 'warning');
+                return;
+            }
+            
+            showAlert('جاري إنشاء وتصدير التقرير...', 'info');
+            
+            // Simulate report generation
+            setTimeout(() => {
+                const reportData = {
+                    generatedAt: new Date().toLocaleString('ar-SA'),
+                    totalSites: 6,
+                    activeSites: 5,
+                    totalDevices: 42,
+                    networkUptime: '99.7%',
+                    dataTransferred: '127 GB',
+                    averageLatency: '42 ms'
+                };
+                
+                console.log('Network Report:', reportData);
+                showAlert('تم تصدير التقرير بنجاح!', 'success');
+            }, 2000);
+        }
+
+        // Refresh detailed statistics
+        function refreshDetailedStats() {
+            showAlert('جاري تحديث البيانات التفصيلية...', 'info');
+            
+            // Simulate data refresh
+            setTimeout(() => {
+                const stats = document.querySelectorAll('#networkModal .stats-counter');
+                stats.forEach(stat => {
+                    const currentValue = stat.textContent;
+                    const unit = currentValue.match(/[A-Za-z%]+/);
+                    const numericValue = parseFloat(currentValue);
+                    const newValue = (numericValue * (0.9 + Math.random() * 0.2)).toFixed(unit ? 0 : 1);
+                    stat.textContent = newValue + (unit ? unit[0] : '');
+                });
+                
+                showAlert('تم تحديث البيانات بنجاح!', 'success');
+            }, 1500);
+        }
+
+        // Start real-time updates
+        function startRealTimeUpdates() {
+            setInterval(() => {
+                updateNetworkStatus();
+                updateCameraStatus();
+            }, 30000); // Update every 30 seconds
+        }
+
+        // Update network status
+        function updateNetworkStatus() {
+            const indicators = document.querySelectorAll('.status-indicator');
+            indicators.forEach(indicator => {
+                // Randomly simulate status changes
+                if (Math.random() < 0.05) { // 5% chance of status change
+                    if (indicator.classList.contains('status-online')) {
+                        indicator.classList.remove('status-online');
+                        indicator.classList.add('status-warning');
+                    } else if (indicator.classList.contains('status-warning')) {
+                        indicator.classList.remove('status-warning');
+                        indicator.classList.add('status-online');
+                    }
+                }
+            });
+        }
+
+        // Update camera status
+        function updateCameraStatus() {
+            const cameras = document.querySelectorAll('[data-camera]');
+            cameras.forEach(camera => {
+                const statusElement = camera.querySelector('small');
+                if (Math.random() < 0.02) { // 2% chance of status change
+                    if (statusElement.classList.contains('text-success')) {
+                        statusElement.classList.remove('text-success');
+                        statusElement.classList.add('text-warning');
+                        statusElement.textContent = 'إنذار حركة';
+                    } else {
+                        statusElement.classList.remove('text-warning', 'text-danger');
+                        statusElement.classList.add('text-success');
+                        statusElement.textContent = 'متصلة';
+                    }
+                }
+            });
+        }
+
+        // Load network data
+        function loadNetworkData() {
+            // Simulate loading network configuration
+            networkData.sites = {
+                'riyadh': { status: 'online', uptime: 99.9, latency: 15 },
+                'cairo': { status: 'online', uptime: 99.8, latency: 23 },
+                'jeddah': { status: 'online', uptime: 99.7, latency: 45 },
+                'dammam': { status: 'online', uptime: 99.5, latency: 38 },
+                'alexandria': { status: 'warning', uptime: 95.2, latency: 89 },
+                'aswan': { status: 'online', uptime: 99.1, latency: 52 }
+            };
+            
+            networkData.cameras = {
+                'jeddah_entrance': { status: 'online', recording: true },
+                'jeddah_office': { status: 'online', recording: true },
+                'jeddah_storage': { status: 'motion', recording: true },
+                'dammam_entrance': { status: 'offline', recording: false }
+            };
+        }
+
+        // Initialize animations
+        function initializeAnimations() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add click effects to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Show alert function
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.getElementById('alertContainer') || createAlertContainer();
+            
+            const alertElement = document.createElement('div');
+            alertElement.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            alertElement.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+            
+            alertElement.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            alertContainer.appendChild(alertElement);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alertElement.parentNode) {
+                    alertElement.remove();
+                }
+            }, 5000);
+        }
+
+        // Create alert container
+        function createAlertContainer() {
+            const container = document.createElement('div');
+            container.id = 'alertContainer';
+            container.style.cssText = 'position: fixed; top: 0; right: 0; z-index: 9999; padding: 20px; pointer-events: none;';
+            container.querySelectorAll('.alert').forEach(alert => {
+                alert.style.pointerEvents = 'auto';
+            });
+            document.body.appendChild(container);
+            return container;
+        }
+
+        // Network diagnostic functions
+        function runNetworkDiagnostic() {
+            if (!currentUser) {
+                showAlert('يرجى تسجيل الدخول لتشغيل التشخيص', 'warning');
+                return;
+            }
+            
+            showAlert('جاري تشغيل تشخيص الشبكة...', 'info');
+            
+            setTimeout(() => {
+                const diagnosticResults = {
+                    connectivity: 'جميع المواقع متصلة',
+                    latency: 'وقت الاستجابة ضمن المعدل الطبيعي',
+                    bandwidth: 'استخدام عرض النطاق: 68%',
+                    security: 'لا توجد تهديدات أمنية مكتشفة',
+                    vpn: 'أنفاق VPN تعمل بشكل طبيعي'
+                };
+                
+                console.log('Network Diagnostic Results:', diagnosticResults);
+                showAlert('تم إكمال تشخيص الشبكة بنجاح!', 'success');
+            }, 3000);
+        }
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

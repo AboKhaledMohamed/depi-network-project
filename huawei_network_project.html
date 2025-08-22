@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Huawei Network Infrastructure Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .features-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "→";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .architecture-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .network-diagram {
+            background: linear-gradient(45deg, #f0f2f5, #e8ecef);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-diagram::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+
+        .hq-box, .branch-box {
+            background: rgba(102, 126, 234, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .branch-box {
+            background: rgba(118, 75, 162, 0.8);
+        }
+
+        .connection-line {
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .implementation-phases {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .phases-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .phases-timeline::before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .phase-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+
+        .phase-item::before {
+            content: "";
+            position: absolute;
+            left: -35px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .phase-title {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .phase-duration {
+            color: #764ba2;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Professional Huawei Network Infrastructure</h1>
+            <p>Complete Enterprise Network Solution with HCIA & HCIP DataCom Core Implementation</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Main Headquarters</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Branch Offices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">60</div>
+                <div class="stat-label">Connected Devices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Network Uptime</div>
+            </div>
+        </div>
+
+        <section class="features-section">
+            <h2 class="section-title">Key Features & Technologies</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Network Security (CIA Model)</h3>
+                    <p class="feature-description">Comprehensive security implementation following the CIA triad principles</p>
+                    <ul class="feature-list">
+                        <li>IPSec VPN between sites</li>
+                        <li>SSL VPN for remote access</li>
+                        <li>Advanced Firewall with IPS</li>
+                        <li>AAA Authentication & Authorization</li>
+                        <li>Port Security & Access Control</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">High Availability & Redundancy</h3>
+                    <p class="feature-description">Enterprise-grade reliability with multiple failover mechanisms</p>
+                    <ul class="feature-list">
+                        <li>VRRP for Gateway Redundancy</li>
+                        <li>STP/RSTP for Loop Prevention</li>
+                        <li>Link Aggregation (Eth-Trunk)</li>
+                        <li>Dual WAN Connectivity</li>
+                        <li>Hot-standby Configuration</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Advanced Routing</h3>
+                    <p class="feature-description">Scalable routing protocols for optimal network performance</p>
+                    <ul class="feature-list">
+                        <li>OSPF for Internal Routing</li>
+                        <li>BGP for Inter-site Connectivity</li>
+                        <li>Static & Default Routes</li>
+                        <li>Route Redistribution</li>
+                        <li>Traffic Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Unified Communications</h3>
+                    <p class="feature-description">Complete VoIP solution with Quality of Service</p>
+                    <ul class="feature-list">
+                        <li>Voice VLAN Implementation</li>
+                        <li>QoS for Voice Traffic</li>
+                        <li>IP Phone Integration</li>
+                        <li>Call Quality Monitoring</li>
+                        <li>Bandwidth Allocation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Wireless Infrastructure</h3>
+                    <p class="feature-description">Enterprise wireless network with centralized management</p>
+                    <ul class="feature-list">
+                        <li>AC Controller Configuration</li>
+                        <li>Multiple SSID Support</li>
+                        <li>WPA2/WPA3 Security</li>
+                        <li>Guest Network Isolation</li>
+                        <li>Roaming Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">Network Monitoring</h3>
+                    <p class="feature-description">Comprehensive monitoring and management tools</p>
+                    <ul class="feature-list">
+                        <li>SNMP Monitoring</li>
+                        <li>NetStream Analysis</li>
+                        <li>Performance Metrics</li>
+                        <li>Alert Management</li>
+                        <li>Configuration Backup</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="architecture-section">
+            <h2 class="section-title">Network Architecture</h2>
+            <div class="architecture-grid">
+                <div>
+                    <h3 style="color: #667eea; margin-bottom: 20px;">IP Addressing Scheme</h3>
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <strong>Headquarters 1 (HQ1)</strong>
+                        <p>Network: 192.168.0.0/16</p>
+                        <p>Branch A1: 192.168.10.0/24</p>
+                        <p>Branch A2: 192.168.20.0/24</p>
+                    </div>
+                    <div style="background: rgba(118, 75, 162, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <strong>Headquarters 2 (HQ2)</strong>
+                        <p>Network: 10.0.0.0/16</p>
+                        <p>Branch B1: 10.0.10.0/24</p>
+                        <p>Branch B2: 10.0.20.0/24</p>
+                    </div>
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 10px;">
+                        <strong>Management Networks</strong>
+                        <p>Management: 172.16.100.0/24</p>
+                        <p>VoIP: 172.16.200.0/24</p>
+                        <p>Cameras: 172.16.50.0/24</p>
+                    </div>
+                </div>
+                <div class="network-diagram">
+                    <div class="hq-box">Headquarters 1<br/>192.168.0.0/16</div>
+                    <div style="display: flex; justify-content: space-between; margin: 20px 0;">
+                        <div class="branch-box">Branch A1<br/>192.168.10.0/24</div>
+                        <div class="branch-box">Branch A2<br/>192.168.20.0/24</div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div style="text-align: center; color: #667eea; font-weight: bold; margin: 10px 0;">
+                        WAN Connection<br/>1000 km
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="hq-box">Headquarters 2<br/>10.0.0.0/16</div>
+                    <div style="display: flex; justify-content: space-between; margin: 20px 0;">
+                        <div class="branch-box">Branch B1<br/>10.0.10.0/24</div>
+                        <div class="branch-box">Branch B2<br/>10.0.20.0/24</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="implementation-phases">
+            <h2 class="section-title">Implementation Timeline</h2>
+            <div class="phases-timeline">
+                <div class="phase-item">
+                    <div class="phase-title">Phase 1: Core Infrastructure</div>
+                    <div class="phase-duration">Week 1-2</div>
+                    <p>Configure core switches and routers, implement VLANs and basic routing, deploy STP and VRRP for high availability</p>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-title">Phase 2: Security Implementation</div>
+                    <div class="phase-duration">Week 3</div>
+                    <p>Deploy firewalls and IPS systems, establish VPN connections between sites, implement AAA and port security</p>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-title">Phase 3: Services & Applications</div>
+                    <div class="phase-duration">Week 4</div>
+                    <p>Configure DHCP and DNS services, deploy VoIP system with QoS, implement wireless network infrastructure</p>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-title">Phase 4: Monitoring & Optimization</div>
+                    <div class="phase-duration">Week 5</div>
+                    <p>Deploy SNMP and NetStream monitoring, configure network management tools, perform testing and optimization</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Transform Your Network?</h2>
+            <p class="cta-description">This comprehensive Huawei network solution provides enterprise-grade reliability, security, and performance for modern business requirements.</p>
+            <a href="#" class="cta-button">Start Implementation</a>
+        </section>
+    </div>
+</body>
+</html>
