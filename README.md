@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 The **Enterprise Network Secure Project** is designed to deliver a **scalable, secure, and high-performance** infrastructure for multi-site organizations.  
-It leverages advanced **HCIA & HCIP DataCom** technologies, ensuring **99.99% uptime**, **CIA-compliant security**, and **unified communications**.
+It leverages advanced **HCIA & HCIP DataCom** technologies, ensuring , **CIA-compliant security**, and **unified communications**.
 
 ## 🎯 Objectives
 - **High Availability**: 99.99% uptime with VRRP, MSTP, and link aggregation.  
