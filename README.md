@@ -36,8 +36,7 @@ It leverages advanced **HCIA & HCIP DataCom** technologies, ensuring , **CIA-com
 - Abdelrahman Radwan  
 - Abdelrahman Khaled  
 - Mahmoud Safwat  
-- Ahmed Mohamed Afifi  
-- Mariam Dweidar  
+
 
 ---
 
